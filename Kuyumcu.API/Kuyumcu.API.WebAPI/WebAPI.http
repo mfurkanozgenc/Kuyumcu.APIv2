@@ -1,0 +1,6 @@
+@Kuyumcu.API.WebAPI_HostAddress = http://localhost:5193
+
+GET {{Kuyumcu.API.WebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

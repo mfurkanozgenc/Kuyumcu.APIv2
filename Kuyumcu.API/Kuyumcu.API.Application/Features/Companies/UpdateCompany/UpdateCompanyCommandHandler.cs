@@ -18,7 +18,7 @@ namespace Kuyumcu.API.Application.Features.Companies.UpdateCompany
 
             if (company is null)
             {
-                return Result<string>.Failure("İŞletme Bulunamadı");
+                return Result<string>.Failure("İşletme Bulunamadı");
             }
 
             mapper.Map(request, company);

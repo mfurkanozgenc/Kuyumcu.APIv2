@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Kuyumcu.API.WebAPI.Abstractions
 {
-    [Route("api/[controller]/[action]")]
+    [Route("api/[controller]/")]
     [ApiController]
     //[Authorize(AuthenticationSchemes = "Bearer")]
     public abstract class ApiController : ControllerBase

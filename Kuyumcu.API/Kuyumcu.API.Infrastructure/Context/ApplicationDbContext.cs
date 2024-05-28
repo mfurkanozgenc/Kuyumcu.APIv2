@@ -14,6 +14,9 @@ namespace Kuyumcu.API.Infrastructure.Context
 
         public DbSet<Company> Companies { get; set; }
         public DbSet<Branch> Branches { get; set; }
+        public DbSet<ProductCategory> ProductCategories { get; set; }
+        public DbSet<ProductType>? ProductTypes { get; set; }
+        public DbSet<Product> Products { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfigurationsFromAssembly(typeof(DependencyInjection).Assembly);

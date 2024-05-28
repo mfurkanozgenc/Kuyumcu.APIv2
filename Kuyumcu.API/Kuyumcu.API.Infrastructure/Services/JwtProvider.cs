@@ -22,7 +22,8 @@ namespace Kuyumcu.API.Infrastructure.Services
                 new Claim("Id", user.Id.ToString()),
                 new Claim("Name", user.FullName),
                 new Claim("Email", user.Email ?? ""),
-                new Claim("UserName", user.UserName ?? "")
+                new Claim("UserName", user.UserName ?? ""),
+                new Claim("Branch", user.BranchId.ToString() ?? ""),
             };
 
             DateTime expires = DateTime.UtcNow.AddMonths(1);

@@ -2,7 +2,7 @@
 
 namespace Kuyumcu.API.Domain.Entities
 {
-    public sealed class ProductType : Entity
+    public sealed class ProductType : BranchEntity
     {
         public string Name { get; set; } = string.Empty;
         public string Code { get; set; } = string.Empty;

@@ -1,17 +1,17 @@
-﻿using Kuyumcu.API.Application.Features.ProductCategories.CreateProductCategory;
-using Kuyumcu.API.Application.Features.ProductCategories.DeleteProductCategory;
-using Kuyumcu.API.Application.Features.ProductCategories.GetAllProductCategoryByBranchId;
-using Kuyumcu.API.Application.Features.ProductCategories.GetProductCategoryById;
-using Kuyumcu.API.Application.Features.ProductCategories.UpdateProductCategory;
+﻿using Kuyumcu.API.Application.Features.ProductTypes.CreateProductType;
+using Kuyumcu.API.Application.Features.ProductTypes.DeleteProductType;
+using Kuyumcu.API.Application.Features.ProductTypes.GetAllProductTypeByBranchId;
+using Kuyumcu.API.Application.Features.ProductTypes.GetProductTypeById;
+using Kuyumcu.API.Application.Features.ProductTypes.UpdateProductTypeCategory;
 using Kuyumcu.API.WebAPI.Abstractions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Kuyumcu.API.WebAPI.Controllers
 {
-    public sealed class ProductCategoryController : ApiController
+    public sealed class ProductTypeController : ApiController
     {
-        public ProductCategoryController(IMediator mediator, IHttpContextAccessor httpContextAccessor) : base(mediator, httpContextAccessor)
+        public ProductTypeController(IMediator mediator, IHttpContextAccessor httpContextAccessor) : base(mediator, httpContextAccessor)
         {
         }
 
@@ -19,7 +19,7 @@ namespace Kuyumcu.API.WebAPI.Controllers
         public async Task<IActionResult> GetAllBranchId(CancellationToken cancellationToken)
         {
             Guid? branchId = _helper?.GetBranchId();
-            GetAllProductCategoryByBranchIdQuery command = new()
+            GetAllProductTypeByBranchIdQuery command = new()
             {
                 BranchId = branchId ?? Guid.Empty
             };
@@ -30,13 +30,13 @@ namespace Kuyumcu.API.WebAPI.Controllers
         [HttpGet("Id")]
         public async Task<IActionResult> GetById(Guid Id,CancellationToken cancellationToken)
         {
-            GetProductCategoryByIdQuery command = new(Id);
+            GetProductTypeByIdQuery command = new(Id);
             var response = await _mediator.Send(command, cancellationToken);
             return StatusCode(response.StatusCode, response);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(CreateProductCategoryCommand request, CancellationToken cancellationToken)
+        public async Task<IActionResult> Create(CreateProductTypeCommand request, CancellationToken cancellationToken)
         {
             request.BranchId = _helper?.GetBranchId() ?? Guid.Empty;
             var response = await _mediator.Send(request, cancellationToken);
@@ -44,7 +44,7 @@ namespace Kuyumcu.API.WebAPI.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(UpdateProductCategoryCommand request, CancellationToken cancellationToken)
+        public async Task<IActionResult> Update(UpdateProductTypeCommand request, CancellationToken cancellationToken)
         {
             request.BranchId = _helper?.GetBranchId() ?? Guid.Empty;
             var response = await _mediator.Send(request, cancellationToken);
@@ -52,7 +52,7 @@ namespace Kuyumcu.API.WebAPI.Controllers
         }
 
         [HttpDelete]
-        public async Task<IActionResult> Delete(DeleteProductCategoryCommand request, CancellationToken cancellationToken)
+        public async Task<IActionResult> Delete(DeleteProductTypeCommand request, CancellationToken cancellationToken)
         {
             var response = await _mediator.Send(request, cancellationToken);
             return StatusCode(response.StatusCode, response);

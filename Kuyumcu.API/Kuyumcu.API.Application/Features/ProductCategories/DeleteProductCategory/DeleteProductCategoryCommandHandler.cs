@@ -6,11 +6,11 @@ using TS.Result;
 
 namespace Kuyumcu.API.Application.Features.ProductCategories.DeleteProductCategory
 {
-    public sealed class DeleteProductCommandHandler(
+    public sealed class DeleteProductCategoryeCommandHandler(
         IProductCategoryRepository productCategoryRepository,
-        IUnitOfWork unitOfWork) : IRequestHandler<DeleteProductCommand, Result<string>>
+        IUnitOfWork unitOfWork) : IRequestHandler<DeleteProductCategoryCommand, Result<string>>
     {
-        public async Task<Result<string>> Handle(DeleteProductCommand request, CancellationToken cancellationToken)
+        public async Task<Result<string>> Handle(DeleteProductCategoryCommand request, CancellationToken cancellationToken)
         {
             ProductCategory productCategory = await productCategoryRepository.GetByExpressionWithTrackingAsync(pc => pc.Id.Equals(request.Id), cancellationToken);
 

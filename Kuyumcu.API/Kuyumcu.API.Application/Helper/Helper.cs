@@ -18,12 +18,11 @@ namespace Kuyumcu.API.Application.Helper
             if (claims.Any())
             {
                 var branchClaim = claims.FirstOrDefault(x => x.Type == "Branch");
-                if (branchClaim != null)
+                if (branchClaim is not null)
                 {
                     return Guid.Parse(branchClaim.Value);
                 }
             }
-
             return Guid.Empty;
         }
 

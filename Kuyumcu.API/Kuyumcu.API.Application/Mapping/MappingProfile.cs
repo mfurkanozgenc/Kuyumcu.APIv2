@@ -9,7 +9,9 @@ using Kuyumcu.API.Application.Features.Products.CreateProduct;
 using Kuyumcu.API.Application.Features.Products.UpdateProduct;
 using Kuyumcu.API.Application.Features.ProductTypes.CreateProductType;
 using Kuyumcu.API.Application.Features.ProductTypes.UpdateProductTypeCategory;
+using Kuyumcu.API.Application.Features.StockMovements.CreateStockMovement;
 using Kuyumcu.API.Domain.Entities;
+using Kuyumcu.API.Domain.Enums;
 
 namespace Kuyumcu.API.Application.Mapping
 {
@@ -23,14 +25,18 @@ namespace Kuyumcu.API.Application.Mapping
             CreateMap<CreateBranchCommand, Branch>();
             CreateMap<UpdateBranchCommand, Branch>();
 
-            CreateMap<CreateProductCategoryCommand , ProductCategory>();
-            CreateMap<UpdateProductCategoryCommand , ProductCategory>();
+            CreateMap<CreateProductCategoryCommand, ProductCategory>();
+            CreateMap<UpdateProductCategoryCommand, ProductCategory>();
 
             CreateMap<CreateProductTypeCommand, ProductType>();
             CreateMap<UpdateProductTypeCommand, ProductType>();
 
             CreateMap<CreateProductCommand, Product>();
             CreateMap<UpdateProductCommand, Product>();
+
+            CreateMap<CreateStockMovementCommand, StokMovement>()
+            .ForMember(member => member.Type, options =>
+            options.MapFrom(p => StockMovementTypeEnum.FromValue(p.TypeValue)));
         }
     }
 }

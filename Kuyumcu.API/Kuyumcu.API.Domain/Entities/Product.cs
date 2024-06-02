@@ -16,6 +16,7 @@ namespace Kuyumcu.API.Domain.Entities
         public ProductCategory? ProductCategory { get; set; }
         public Guid ProductTypeId { get; set; }
         public ProductType? ProductType { get; set; }
+        public List<StokMovement>? StokMovements { get; set; }
 
         public Product()
         {

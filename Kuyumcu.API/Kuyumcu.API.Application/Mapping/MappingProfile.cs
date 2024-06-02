@@ -5,6 +5,8 @@ using Kuyumcu.API.Application.Features.Companies.CreateCompany;
 using Kuyumcu.API.Application.Features.Companies.UpdateCompany;
 using Kuyumcu.API.Application.Features.ProductCategories.CreateProductCategory;
 using Kuyumcu.API.Application.Features.ProductCategories.UpdateProductCategory;
+using Kuyumcu.API.Application.Features.Products.CreateProduct;
+using Kuyumcu.API.Application.Features.Products.UpdateProduct;
 using Kuyumcu.API.Application.Features.ProductTypes.CreateProductType;
 using Kuyumcu.API.Application.Features.ProductTypes.UpdateProductTypeCategory;
 using Kuyumcu.API.Domain.Entities;
@@ -26,6 +28,9 @@ namespace Kuyumcu.API.Application.Mapping
 
             CreateMap<CreateProductTypeCommand, ProductType>();
             CreateMap<UpdateProductTypeCommand, ProductType>();
+
+            CreateMap<CreateProductCommand, Product>();
+            CreateMap<UpdateProductCommand, Product>();
         }
     }
 }

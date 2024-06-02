@@ -17,5 +17,10 @@ namespace Kuyumcu.API.Domain.Entities
         public Guid ProductTypeId { get; set; }
         public ProductType? ProductType { get; set; }
 
+        public Product()
+        {
+            IsSaleStatus = true;
+            IsStockStatus = true;
+        }
     }
 }
